@@ -1,5 +1,7 @@
 ## Understanding Bottlenecks in TrueNAS & ZFS Server Builds 💽
 
+---
+
 ### 1. CPU Horsepower 🐎
 
 #### Detailed Discussion:
@@ -25,6 +27,7 @@
 
 
 ---
+
 | **Series (Code Name)**                       | **Year**  | **Average Core Count** | **Average Base Frequency** | **Notes on IPC**                                                                                                                                 |
 |----------------------------------------------|-----------|------------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | **AMD Opteron (3rd Gen)**                    | 2006-2012 | 4-16 cores             | 2.0 - 3.0 GHz             | Moderate IPC improvements compared to previous generations but lagged behind contemporaneous offerings.                                           |
@@ -42,7 +45,9 @@
 | **Intel Xeon Scalable (Ice Lake-SP)**        | 2021      | 8-40 cores (Estimated)  | 2.2 - 3.6 GHz (Estimated) | Highest IPC in the Intel lineup; improved performance especially in single-threaded tasks.                                                        |
 | **AMD EPYC (Milan)**                         | 2021      | 8-64 cores             | 2.3 - 3.6 GHz             | Latest generation with the highest IPC in the AMD lineup, offering high performance in a wide range of server applications.                        |
 | **Intel Core (Alder Lake, 12th Gen)**        | 2021      | 6-16 cores             | 2.4 - 3.9 GHz (Estimated) | Represents a substantial leap in IPC performance, leveraging a hybrid architecture to balance efficiency and performance for various workloads.   |
+
 ---
+
 ## IPC (Instructions Per Cycle) 🖥️
 
 ### **Definition** 📖
