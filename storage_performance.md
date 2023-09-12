@@ -1,6 +1,6 @@
 ## Understanding Bottlenecks in TrueNAS & ZFS Server Builds
 
-### 4. 🚀 Storage Drives (NVME/SAS/SATA)
+### 🚀 Storage Drives (NVME/SAS/SATA)
 
 #### 🖇️ SAS & SATA Drives
 
