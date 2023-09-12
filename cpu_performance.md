@@ -10,20 +10,20 @@
   - **Real-world example:** In a graphic design firm where large file transfers are frequent, leveraging a high-speed NIC in conjunction with good single-threaded CPU performance can facilitate quicker file sharing on a TrueNAS system, enhancing productivity and workflow.
 
 - **Insufficient CPU Cores and Parallel Processing 🛑:**
-  In environments where numerous parallel operations, such as handling multiple users or running several applications simultaneously, are the norm, having a CPU with a limited number of cores can become a bottleneck. Such scenarios demand CPUs with a higher core count to efficiently manage and process parallel requests without causing delays or performance degradation. Essentially, the CPU must be capable of multitasking effectively to prevent slowing down the system when numerous processes are running concurrently.
   - **Real-world example:** During a busy workday, a company relying on a TrueNAS server to host a multi-user database could experience delays if the server has insufficient CPU cores to handle parallel data requests, significantly affecting the efficiency of operations.
+  In environments where numerous parallel operations, such as handling multiple users or running several applications simultaneously, are the norm, having a CPU with a limited number of cores can become a bottleneck. Such scenarios demand CPUs with a higher core count to efficiently manage and process parallel requests without causing delays or performance degradation. Essentially, the CPU must be capable of multitasking effectively to prevent slowing down the system when numerous processes are running concurrently.
 
 - **Low CPU Frequency and Compression Tasks 🐢:**
-  Particularly in ZFS systems where data compression is a common operation, having a CPU with a low-frequency rate can be a limitation. Compression tasks are CPU-intensive, requiring substantial computational power. A low-frequency CPU might struggle to keep up with the continuous demand for data compression, creating a bottleneck that slows down the entire data storage and retrieval process.
   - **Real-world example:** A video production house using TrueNAS for file sharing could face slow compression and decompression of large video files if the CPU frequency is insufficient, hindering the quick sharing and retrieval of files.
+  Particularly in ZFS systems where data compression is a common operation, having a CPU with a low-frequency rate can be a limitation. Compression tasks are CPU-intensive, requiring substantial computational power. A low-frequency CPU might struggle to keep up with the continuous demand for data compression, creating a bottleneck that slows down the entire data storage and retrieval process.
 
 - **CPU and RAIDZ Parity Calculations 🔍:**
-  In a ZFS Zpool topology utilizing RAIDZ, parity calculations are handled by the CPU, which can be computationally intensive, especially with larger arrays. A CPU with limited horsepower might find itself overwhelmed while handling RAIDZ parity calculations, consequently affecting the system’s performance by inducing delays in read/write operations.
   - **Real-world example:** In a research institution where large datasets are the norm, the RAIDZ parity calculations on a TrueNAS server can become a significant bottleneck if the CPU is not robust enough, potentially slowing down data retrieval times during critical research periods.
+  In a ZFS Zpool topology utilizing RAIDZ, parity calculations are handled by the CPU, which can be computationally intensive, especially with larger arrays. A CPU with limited horsepower might find itself overwhelmed while handling RAIDZ parity calculations, consequently affecting the system’s performance by inducing delays in read/write operations.
 
 - **Priority Justification 👑:**
-  The CPU, being central to processing a multitude of tasks including network packet management, parallel processing, data compression, and RAIDZ parity calculations, is pivotal in avoiding bottlenecks. Its capabilities fundamentally determine the system's efficiency and performance in diverse operations, underscoring its vital role in a TrueNAS and ZFS server environment.
   - **Real-world example:** For a tech startup utilizing KVM virtualization and k3s applications on TrueNAS SCALE, having a powerful CPU becomes imperative. It ensures smooth running of containerized applications, facilitating agile and scalable deployments without encountering performance bottlenecks.
+  The CPU, being central to processing a multitude of tasks including network packet management, parallel processing, data compression, and RAIDZ parity calculations, is pivotal in avoiding bottlenecks. Its capabilities fundamentally determine the system's efficiency and performance in diverse operations, underscoring its vital role in a TrueNAS and ZFS server environment.
 
 
 ---
