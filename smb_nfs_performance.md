@@ -28,42 +28,63 @@ By default, NFS carries out many operations synchronously, valuing data reliabil
 ### 🔷 Impact on SMB
 SMB, unlike NFS, does not insist on synchronous writes by default, offering quicker write operations at a slightly elevated risk to data integrity. However, SMB provides the flexibility to enable sync writes as needed, potentially taking on the performance overhead witnessed in NFS setups.
 
-### ZFS Write Paths Illustrated with Emojis
+---
 
-#### With Synchronous Writes (Sync Writes Enabled)
+## ZFS Write Paths Illustrated with Emojis
+### With Synchronous Writes (Sync Writes Enabled)
 
-1. 📂 **Source File** → 🖥️ **Client Machine**
-2. 📤 **Write Request**
-3. 🖥️ **Client Machine** → 🖧 **Server**
-4. 📤 **Transmitting Write Request**
-5. 🖧 **Server** → 💽 **ZFS File System**
-6. ✍️ **Writing Data to Disk**
-7. 💽 **ZFS File System**
-8. ✅ **Write Confirmation**
-9. 💽 **ZFS File System** → 🖧 **Server**
-10. 📤 **Transmitting Write Confirmation**
-11. 🖧 **Server** → 🖥️ **Client Machine**
-12. ✉️ **Delivering Write Confirmation**
-13. 🖥️ **Client Machine**
-14. ✅ **Write Operation Complete**
+<details>
+  <summary>Initiation by the Client Machine</summary>
+  
+  - 📂 Source File → 💻 Client Machine
+  - 📤 Client initiates Write Request
+  - 💻 Client Machine → 🖧 Server (Transmitting Write Request)
+</details>
 
-#### Without Synchronous Writes (Sync Writes Disabled)
+<details>
+  <summary>Server to ZFS File System and Response</summary>
+  
+  - 🖧 Server → 💾 ZFS File System (Receiving Write Request)
+  - 💾 ZFS File System → 💾 + 🧠 RAM (Aggregating Data in TXG)
+  - 💾 ZFS File System → 📝 ZIL (Storing Intent in ZIL in Parallel)
+  - Optional: 📝 ZIL → 🚀 SLOG (Offloading to a separate log device)
+  - 📝 ZIL confirms data safety to 💾 ZFS File System
+</details>
 
-1. 📂 **Source File** → 🖥️ **Client Machine**
-2. 📤 **Write Request**
-3. 🖥️ **Client Machine** → 🖧 **Server**
-4. 📤 **Transmitting Write Request**
-5. 🖧 **Server** → 💽 **ZFS File System**
-6. ✍️ **Writing Data to Cache**
-7. 💽 **ZFS File System**
-8. ✅ **Presumed Write Success (No Confirmation from Disk)**
-9. 💽 **ZFS File System** → 🖧 **Server**
-10. 📤 **Transmitting Presumed Success Notification**
-11. 🖧 **Server** → 🖥️ **Client Machine**
-12. ✉️ **Delivering Presumed Success Notification**
-13. 🖥️ **Client Machine**
-14. ✅ **Write Operation Presumed Complete (No Confirmation from Disk)**
+<details>
+  <summary>Response Received by the Client</summary>
+  
+  - 💾 ZFS File System → 🖧 Server (Write Confirmation)
+  - 🖧 Server → 💻 Client Machine (Transmitting Write Confirmation)
+  - 💻 Client Machine (Receiving Write Confirmation)
+  - 💻 Client Machine (Write Operation Complete with Disk Confirmation)
+</details>
 
+### Without Synchronous Writes (Sync Writes Disabled)
+
+<details>
+  <summary>Initiation by the Client Machine</summary>
+  
+  - 📂 Source File → 💻 Client Machine
+  - 📤 Client initiates Write Request
+  - 💻 Client Machine → 🖧 Server (Transmitting Write Request)
+</details>
+
+<details>
+  <summary>Server to ZFS File System and Response</summary>
+  
+  - 🖧 Server → 💾 ZFS File System (Receiving Write Request)
+  - 💾 ZFS File System → 🧠 RAM (Aggregating Data in TXG)
+  - 💾 ZFS File System (Presumed Write Success, No Confirmation from Disk)
+</details>
+
+<details>
+  <summary>Response Received by the Client</summary>
+  
+  - 🖧 Server → 💻 Client Machine (Transmitting Presumed Success Notification)
+  - 💻 Client Machine (Receiving Presumed Success Notification)
+  - 💻 Client Machine (Write Operation Presumed Complete, No Confirmation from Disk)
+</details>
 
 ---
 
