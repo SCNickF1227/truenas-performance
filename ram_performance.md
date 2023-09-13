@@ -1,6 +1,6 @@
 ### Understanding Bottlenecks in TrueNAS & ZFS Server Builds
 
-### 2. Memory 🧠
+### Memory 🧠
 
 #### Capacity 🗃️
 
@@ -35,7 +35,7 @@
   - **Significance:** Ensuring that the memory bandwidth can accommodate the increased demand of CoW operations is essential to maintain system performance and prevent bottlenecks.
   - **Real-World Examples:**
       - **🟢 Balanced:** An enterprise server setup with an optimized memory bandwidth handles CoW operations seamlessly, facilitating efficient data management without overburdening the system resources, which would slow down performance.
-      - **🔴 Imbalanced:** A personal use server with limited memory bandwidth finds itself constantly slow and laggy due to the high demand from CoW operations, hindering the user's ability to quickly access and modify data, thereby creating a frustrating user experience.
+      - **🔴 Imbalanced:** A personal use server with limited memory bandwidth finds itself constantly slow and laggy due to the high demand from read-modify-write operations, hindering the user's ability to quickly access and modify data, thereby creating a frustrating user experience.
   - **Impact:** The inefficient management of CoW operations due to insufficient memory bandwidth can result in a sluggish system, thereby decreasing overall productivity and system usability.
 
 #### Priority Justification 🏆
