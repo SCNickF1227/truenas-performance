@@ -1,10 +1,75 @@
-### **File Sharing Protocols (SMB, NFS) and Associated Errors**
+## File Sharing Protocols (SMB, NFS) and Associated Errors
+### Definition:
+SMB and NFS are protocols vital in facilitating file sharing in network systems, particularly in environments utilizing ZFS in a TrueNAS setup. These protocols interact differently with synchronous write settings in ZFS, influencing the data integrity and performance of the network. Errors occurring due to various issues including misconfigurations, improper handling of sync writes, and network instabilities can significantly degrade network performance.
 
-- **Definition:** 
-  SMB and NFS are protocols essential for facilitating file sharing in network systems, especially in environments leveraging the ZFS backend within a TrueNAS setup. However, due to a myriad of reasons including system errors, network instability, and misconfigurations, a range of errors can occur which significantly hamper network performance.
+### Significance:
+Understanding and promptly addressing the errors and the intricate dynamics of sync writes is crucial. Ignorance or mismanagement can lead to high latency, reduced throughput, and in severe cases, system downtimes.
 
-- **Significance:** 
-  A meticulous understanding and timely addressing of these errors are paramount. Neglecting these errors could result in high latency, a decline in throughput, and in severe cases, complete system downtimes, substantially affecting the efficacy of the network infrastructure.
+#### Real-World Examples:
+
+🟢 Balanced:
+A well-managed enterprise environment where administrators maintain a keen eye on system logs to identify and address errors swiftly. This network also balances the need for data integrity with performance efficiency by fine-tuning synchronous write settings in its ZFS backend, accommodating the specific requirements of both NFS and SMB protocols and maintaining high network performance.
+
+🔴 Imbalanced:
+A network where frequent errors such as “stale file handle” in NFS or “access denied” in SMB occur due to improper configurations and are left unresolved, burdening the system progressively. Moreover, this network does not optimize synchronous write settings, leading to either jeopardized data integrity or noticeable slowdowns in environments with heavy write operations, thereby reducing overall network efficacy.
+
+Impact:
+Timely identification and mitigation of errors, along with optimizing sync write settings, can prevent potential bottlenecks, enhance network security, and sustain optimal network performance.
+
+---
+
+## **Synchronous Writes in ZFS: Impacts on NFS and SMB**
+📘 ### Understanding Sync Writes
+In ZFS, synchronous writes (sync writes) involve a data storage process where a confirmation of data written to the disk is necessary before deeming the write operation complete, ensuring data integrity but potentially increasing latency due to the added confirmation step.
+
+🔶 ### Impact on NFS
+By default, NFS carries out many operations synchronously, valuing data reliability but potentially slowing down write speeds. The necessity for disk confirmation of each write can introduce latency, especially in environments experiencing heavy write workloads.
+
+🔷 ### Impact on SMB
+SMB, unlike NFS, does not insist on synchronous writes by default, offering quicker write operations at a slightly elevated risk to data integrity. However, SMB provides the flexibility to enable sync writes as needed, potentially taking on the performance overhead witnessed in NFS setups.
+
+### ZFS Write Paths Illustrated with Emojis
+
+#### With Synchronous Writes (Sync Writes Enabled)
+
+1. 📂 **Source File** → 🖥️ **Client Machine**
+2. 📤 **Write Request**
+3. 🖥️ **Client Machine** → 🖧 **Server**
+4. 📤 **Transmitting Write Request**
+5. 🖧 **Server** → 💽 **ZFS File System**
+6. ✍️ **Writing Data to Disk**
+7. 💽 **ZFS File System**
+8. ✅ **Write Confirmation**
+9. 💽 **ZFS File System** → 🖧 **Server**
+10. 📤 **Transmitting Write Confirmation**
+11. 🖧 **Server** → 🖥️ **Client Machine**
+12. ✉️ **Delivering Write Confirmation**
+13. 🖥️ **Client Machine**
+14. ✅ **Write Operation Complete**
+
+#### Without Synchronous Writes (Sync Writes Disabled)
+
+1. 📂 **Source File** → 🖥️ **Client Machine**
+2. 📤 **Write Request**
+3. 🖥️ **Client Machine** → 🖧 **Server**
+4. 📤 **Transmitting Write Request**
+5. 🖧 **Server** → 💽 **ZFS File System**
+6. ✍️ **Writing Data to Cache**
+7. 💽 **ZFS File System**
+8. ✅ **Presumed Write Success (No Confirmation from Disk)**
+9. 💽 **ZFS File System** → 🖧 **Server**
+10. 📤 **Transmitting Presumed Success Notification**
+11. 🖧 **Server** → 🖥️ **Client Machine**
+12. ✉️ **Delivering Presumed Success Notification**
+13. 🖥️ **Client Machine**
+14. ✅ **Write Operation Presumed Complete (No Confirmation from Disk)**
+
+
+---
+
+## **Details on Common Errors and Their Implications**
+
+---
 
 ### **Real-World Examples**
 
