@@ -16,7 +16,7 @@
   - **Definition:** The underprovisioning of RAM which results in inadequate support for ZFS's space-saving deduplication feature, creating a bottleneck.
   - **Significance:** Adequate RAM allocation is essential for the efficient functioning of the deduplication process, which demands high memory resources.
   - **Real-World Examples:**
-      - **🟢 Balanced:** A corporate server running TrueNAS with 512GB of RAM leverages deduplication to prevent unnecessary duplication of data, hence conserving storage space without compromising system performance.
+      - **🟢 Balanced:** A corporate server running TrueNAS with 512GB of RAM leverages deduplication to prevent unnecessary duplication of data. Having sufficent RAM capacity and speed (both are required for sucess), can conserve storage space without too significantly compromising system performance, with deduplication enabled.
       - **🔴 Imbalanced:** A small business tries to save on storage costs by enabling deduplication on their TrueNAS server which has only 64GB of RAM, this insufficient memory allocation results in the server slowing down drastically due to the high memory demand of deduplication, affecting daily operations negatively.
   - **Impact:** Running deduplication with insufficient RAM not only slows down system performance but can create a bottleneck, hampering both read and write operations substantially.
 
