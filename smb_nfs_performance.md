@@ -19,13 +19,13 @@ Timely identification and mitigation of errors, along with optimizing sync write
 ---
 
 ## **Synchronous Writes in ZFS: Impacts on NFS and SMB**
-📘 ### Understanding Sync Writes
+### 📘 Understanding Sync Writes
 In ZFS, synchronous writes (sync writes) involve a data storage process where a confirmation of data written to the disk is necessary before deeming the write operation complete, ensuring data integrity but potentially increasing latency due to the added confirmation step.
 
-🔶 ### Impact on NFS
+ ### 🔶 Impact on NFS
 By default, NFS carries out many operations synchronously, valuing data reliability but potentially slowing down write speeds. The necessity for disk confirmation of each write can introduce latency, especially in environments experiencing heavy write workloads.
 
-🔷 ### Impact on SMB
+### 🔷 Impact on SMB
 SMB, unlike NFS, does not insist on synchronous writes by default, offering quicker write operations at a slightly elevated risk to data integrity. However, SMB provides the flexibility to enable sync writes as needed, potentially taking on the performance overhead witnessed in NFS setups.
 
 ### ZFS Write Paths Illustrated with Emojis
