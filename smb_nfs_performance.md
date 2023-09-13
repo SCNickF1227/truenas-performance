@@ -44,6 +44,9 @@
 
 ### **Impact:** 
 Identifying and addressing errors associated with SMB and NFS protocols promptly can help in preventing potential bottlenecks, thereby enhancing network security and sustaining optimal network performance, and fostering a robust and resilient network environment.
+
+---
+
 | Use-Case                        | Preferred Protocol | Reason                                                                                                                                                      |
 |---------------------------------|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **UNIX/Linux environments**     | NFS               | NFS is built into UNIX and Linux distributions, allowing for seamless integration and optimization in UNIX-like environments.                               |
