@@ -44,4 +44,15 @@
 
 ### **Impact:** 
 Identifying and addressing errors associated with SMB and NFS protocols promptly can help in preventing potential bottlenecks, thereby enhancing network security and sustaining optimal network performance, and fostering a robust and resilient network environment.
+| Use-Case                        | Preferred Protocol | Reason                                                                                                                                                      |
+|---------------------------------|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **UNIX/Linux environments**     | NFS               | NFS is built into UNIX and Linux distributions, allowing for seamless integration and optimization in UNIX-like environments.                               |
+| **Windows environments**        | SMB               | SMB, also known as CIFS, is native to Windows, offering better compatibility and integration in Windows-centric ecosystems.                                   |
+| **Mixed environments (Windows, Linux, UNIX)** | SMB/NFS           | In mixed environments, leveraging both protocols allows you to cater to the specific needs of different systems, ensuring optimized performance across all platforms.|
+| **High performance computing**  | NFS               | NFS can support high transfer rates, making it suitable for high-performance computing settings where large data sets are the norm.                           |
+| **Collaborative Projects across different platforms** | SMB/NFS | Using both protocols would cater to users on different platforms, promoting collaborative work without compromising on efficiency.                            |
+| **Video Streaming and Multimedia** | SMB | SMB2 and SMB3 offer substantial improvements in performance and efficiency, making them suitable for multimedia streaming, offering smooth playback experiences.|
+| **Secured Corporate Networks**  | SMB               | SMB3 supports strong encryption which can enhance security in corporate networks, protecting sensitive data during transmission.                             |
+| **Virtualization Environments** | NFS               | NFS allows for the sharing of virtual disks and VM images over the network in virtualized environments, offering enhanced flexibility and ease of management. |
+| **Home Networks**               | SMB               | SMB is generally easier to set up and configure for home users, offering a simple solution for file sharing in home networks.                                |
 
