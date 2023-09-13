@@ -8,8 +8,8 @@
   - **Definition:** The correlation between the size of the datasets a server handles and the RAM needed to maintain optimal performance.
   - **Significance:** Ensuring that a system has sufficient RAM to support large datasets is essential to prevent performance degradation and memory bottlenecks.
   - **Real-World Examples:**
-      - **🟢 Balanced:** A graphic design studio maintains a TrueNAS server with 256GB of RAM to handle large video files efficiently, thereby facilitating quick access and smooth editing workflows for multiple concurrent users.
-      - **🔴 Imbalanced:** A home user operates a TrueNAS server with 256GB of RAM, primarily to store and stream movies through Plex. This setup is excessive, as a simple Plex library does not require a large amount of RAM, leading to underutilization and unnecessary costs.
+      - **🟢 Balanced:** A graphic design studio maintains a TrueNAS server with 256GB of RAM to handle large video files efficiently, thereby facilitating quick access and smooth editing workflows for *multiple concurrent users.*
+      - **🔴 Imbalanced:** A home user operates a TrueNAS server with 256GB of RAM, primarily to store and stream movies through Plex. This setup is excessive, as a simple Plex library does not require a large amount of RAM, and the amount of *concurrent* access is limited, leading to underutilization and unnecessary costs.
   - **Impact:** A system with sufficient RAM can allow for more significant caching of data, improving overall system responsiveness and performance.
 
 - **Inadequate Memory for ZFS Deduplication**
